@@ -1,29 +1,69 @@
 'use strict';
-/**
- * @ngdoc overview
- * @name sbAdminApp
- * @description
- * # sbAdminApp
- *
- * Main module of the application.
- */
-angular
-  .module('sbAdminApp', [
+
+
+var api = {
+    protocol: 'http',
+    server: 'localhost',
+    port: 4000,
+    baseUrl: '/api/v1',
+    loginUrl: '/login',
+    registerUrl: '/register',
+    getTrainStations: "/trainStation",
+    getGlobalSections: "/globalSections",
+    getPlanSections: "/userPlanSectionsList"
+};
+
+
+var apiUrl = api.protocol + '://' + api.server + ':' + api.port + api.baseUrl;
+var apiLoginUrl = api.protocol + '://' + api.server + ':' + api.port + api.loginUrl;
+var apiRegisterUrl = api.protocol + '://' + api.server + ':' + api.port + api.registerUrl;
+var apiGetTrainStations = apiUrl + api.getTrainStations;
+var apiGetglobalSections = apiUrl + api.getGlobalSections;
+var apiGetPlanSections = apiUrl + api.getPlanSections;
+var initInjector = angular.injector(['ng']);
+var $http = initInjector.get('$http');
+
+
+
+
+
+var app = angular
+  .module('smartSchoolApp', [
     'oc.lazyLoad',
     'ui.router',
     'ui.bootstrap',
     'angular-loading-bar',
-  ])
-  .config(['$stateProvider','$urlRouterProvider','$ocLazyLoadProvider',function ($stateProvider,$urlRouterProvider,$ocLazyLoadProvider) {
+  ]);
+  
+  
+  app.config(['$stateProvider','$urlRouterProvider','$ocLazyLoadProvider',function ($stateProvider,$urlRouterProvider,$ocLazyLoadProvider) {
     
     $ocLazyLoadProvider.config({
       debug:false,
       events:true,
     });
 
-    $urlRouterProvider.otherwise('/dashboard/home');
+    $urlRouterProvider.otherwise('login');
 
+    
     $stateProvider
+            .state('login', {
+                templateUrl: 'login.html',
+                url: '/login',
+                controller: 'loginCtrl',
+                resolve: {
+                    loadMyDirectives: function ($ocLazyLoad) {
+                        return $ocLazyLoad.load(
+                            {
+                                name: 'smartSchoolApp',
+                                files: [
+                                    'scripts/controllers/login.js',
+                                ]
+                            })
+
+                    }
+                }
+            })
       .state('dashboard', {
         url:'/dashboard',
         templateUrl: 'views/dashboard/main.html',
@@ -31,7 +71,7 @@ angular
             loadMyDirectives:function($ocLazyLoad){
                 return $ocLazyLoad.load(
                 {
-                    name:'sbAdminApp',
+                    name:'smartSchoolApp',
                     files:[
                     'scripts/directives/header/header.js',
                     'scripts/directives/header/header-notification/header-notification.js',
@@ -81,7 +121,7 @@ angular
         resolve: {
           loadMyFiles:function($ocLazyLoad) {
             return $ocLazyLoad.load({
-              name:'sbAdminApp',
+              name:'smartSchoolApp',
               files:[
               'scripts/controllers/main.js',
               'scripts/directives/timeline/timeline.js',
@@ -101,10 +141,6 @@ angular
         templateUrl:'views/pages/blank.html',
         url:'/blank'
     })
-      .state('login',{
-        templateUrl:'views/pages/login.html',
-        url:'/login'
-    })
       .state('dashboard.chart',{
         templateUrl:'views/chart.html',
         url:'/chart',
@@ -119,7 +155,7 @@ angular
               ]
             }),
             $ocLazyLoad.load({
-                name:'sbAdminApp',
+                name:'smartSchoolApp',
                 files:['scripts/controllers/chartContoller.js']
             })
           }
@@ -153,6 +189,8 @@ angular
        templateUrl:'views/ui-elements/grid.html',
        url:'/grid'
    })
+   
+        $urlRouterProvider.otherwise('/login');
   }]);
 
     

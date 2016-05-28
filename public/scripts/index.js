@@ -26,6 +26,7 @@ var app = angular
     'ui.router',
     'ui.bootstrap',
     'ngCookies',
+    'ngResource',
     'angular-loading-bar',
   ]);
   

@@ -8,20 +8,13 @@ var api = {
     baseUrl: '/api/v1',
     loginUrl: '/login',
     registerUrl: '/register',
-    getTrainStations: "/trainStation",
-    getGlobalSections: "/globalSections",
-    getPlanSections: "/userPlanSectionsList"
+   
 };
 
 
 var apiUrl = api.protocol + '://' + api.server + ':' + api.port + api.baseUrl;
 var apiLoginUrl = api.protocol + '://' + api.server + ':' + api.port + api.loginUrl;
 var apiRegisterUrl = api.protocol + '://' + api.server + ':' + api.port + api.registerUrl;
-var apiGetTrainStations = apiUrl + api.getTrainStations;
-var apiGetglobalSections = apiUrl + api.getGlobalSections;
-var apiGetPlanSections = apiUrl + api.getPlanSections;
-var initInjector = angular.injector(['ng']);
-var $http = initInjector.get('$http');
 
 
 
@@ -32,6 +25,7 @@ var app = angular
     'oc.lazyLoad',
     'ui.router',
     'ui.bootstrap',
+    'ngCookies',
     'angular-loading-bar',
   ]);
   
@@ -76,7 +70,8 @@ var app = angular
                     'scripts/directives/header/header.js',
                     'scripts/directives/header/header-notification/header-notification.js',
                     'scripts/directives/sidebar/sidebar.js',
-                    'scripts/directives/sidebar/sidebar-search/sidebar-search.js'
+                    'scripts/directives/sidebar/sidebar-search/sidebar-search.js',
+                    'scripts/controllers/logout.js'
                     ]
                 }),
                 $ocLazyLoad.load(

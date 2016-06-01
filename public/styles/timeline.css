@@ -129,6 +129,15 @@
     background-color: #5bc0de !important;
 }
 
+.timeline-badge.grey {
+    background-color: #a8a8a8 !important;
+}
+.timeline-badge.darkYellow {
+    background-color: #a07517 !important;
+}
+
+
+
 .timeline-title {
     margin-top: 0;
     color: inherit;

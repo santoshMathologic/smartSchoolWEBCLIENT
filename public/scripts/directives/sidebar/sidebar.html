@@ -11,6 +11,23 @@
             <li ui-sref-active="active">
                 <a ui-sref="dashboard.home"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
             </li>
+            
+            <li ng-class="{active:collapseVar==5}">
+                <a href="" ng-click="check(5)">  <i class="fa fa-glass fa-1x" aria-hidden="true"></i>Class<span
+                        class="fa arrow"></span></a>
+                <ul class="nav nav-second-level" collapse="collapseVar!=5">
+                    <li ng-class="{active: selectedMenu=='blank'}">
+                        <a ui-sref="dashboard.class">Create Class</a>
+                    </li>
+                    <li>
+                        <a ui-sref="dashboard.viewclass">List of Class</a>
+                    </li>
+                </ul>
+                <!-- /.nav-second-level -->
+            </li>
+            
+            
+            
             <li ui-sref-active="active">
 
                 <a ui-sref="dashboard.chart"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span></span></a>
@@ -92,7 +109,7 @@
                 </ul>
                 <!-- /.nav-second-level -->
             </li>
-            <li><a href="http://www.strapui.com/">Premium Angular Themes</a></li>
+            
         </ul>
     </div>
     <!-- /.sidebar-collapse -->

@@ -3,3 +3,14 @@
     background-color: #eee;
     border-color: #ccc;
 }
+
+.customFieldSet{
+    color:black;
+    background: #cccccc!important;
+}
+
+div.others {
+  transition: all linear 0.5s;
+  background-color: lightblue;
+  border: 1px black solid;
+}

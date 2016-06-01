@@ -30,10 +30,10 @@
                                 </label>
                             </div>
                             <!-- Change this to a button or input when using this as a form -->
-                            <a ng-click="doLogin()" class="btn btn-lg btn-success btn-block" style="border-radius:0px"
+                             <input type="submit" value="Login" ng-click="doLogin()" class="btn btn-lg btn-danger btn-block" style="border-radius:0px"
                             
                             ng-disabled="myForm.userName.$dirty && myForm.userName.$invalid ||
-                            myForm.password.$dirty && myForm.password.$invalid">Login</a>
+                            myForm.password.$dirty && myForm.password.$invalid"></input>
                         </fieldset>
                     </form>
                 </div>

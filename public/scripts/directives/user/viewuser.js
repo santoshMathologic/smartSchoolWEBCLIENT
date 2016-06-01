@@ -1,8 +1,8 @@
 'use strict';
 angular.module('smartSchoolApp')
-	.directive('viewClass', function () {
+	.directive('viewUser', function () {
 		return {
-			templateUrl: 'scripts/directives/class/viewclass.html',
+			templateUrl: 'scripts/directives/user/viewuser.html',
 			restrict: 'EA',
 			replace: true,
 			controller: function ($scope, $http, UserAuthFactory, AuthenticationFactory) {

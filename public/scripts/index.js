@@ -218,6 +218,40 @@ app.config(['$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider', funct
             })
         }
       }
+    }).
+    state('dashboard.viewuser', {
+      templateUrl: 'views/dashboard/viewuser.tmpl.html',
+      url: '/viewuser',
+      controller: 'viewuserCtrl',
+      resolve: {
+        loadMyDirectives: function ($ocLazyLoad) {
+          return $ocLazyLoad.load(
+            {
+              name: 'smartSchoolApp',
+              files: [
+                'scripts/controllers/viewuser.js',
+                'scripts/directives/user/viewuser.js'
+              ]
+            })
+        }
+      }
+    })
+    . state('dashboard.user', {
+      templateUrl: 'views/dashboard/user.tmpl.html',
+      url: '/user',
+      controller: 'userCtrl',
+      resolve: {
+        loadMyDirectives: function ($ocLazyLoad) {
+          return $ocLazyLoad.load(
+            {
+              name: 'smartSchoolApp',
+              files: [
+                'scripts/controllers/user.js',
+                'scripts/directives/user/user.js'
+              ]
+            })
+        }
+      }
     })
     
     

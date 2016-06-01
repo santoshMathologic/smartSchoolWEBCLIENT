@@ -13,7 +13,7 @@
             </li>
             
             <li ng-class="{active:collapseVar==5}">
-                <a href="" ng-click="check(5)">  <i class="fa fa-glass fa-1x" aria-hidden="true"></i>Class<span
+                <a href="" ng-click="check(5)">  <i class="fa fa-glass fa-fw fa-1x" aria-hidden="true"></i>Class<span
                         class="fa arrow"></span></a>
                 <ul class="nav nav-second-level" collapse="collapseVar!=5">
                     <li ng-class="{active: selectedMenu=='blank'}">
@@ -21,6 +21,21 @@
                     </li>
                     <li>
                         <a ui-sref="dashboard.viewclass">List of Class</a>
+                    </li>
+                </ul>
+                <!-- /.nav-second-level -->
+            </li>
+            
+            
+            <li ng-class="{active:collapseVar==6}">
+                <a href="" ng-click="check(6)">  <i class="fa fa-upload fa-fw fa-1x" aria-hidden="true"></i>Upload<span
+                        class="fa arrow"></span></a>
+                <ul class="nav nav-second-level" collapse="collapseVar!=6">
+                    <li ng-class="{active: selectedMenu=='blank'}">
+                        <a ui-sref="dashboard.class">Upload</a>
+                    </li>
+                    <li>
+                        <a ui-sref="dashboard.viewclass">View Upload</a>
                     </li>
                 </ul>
                 <!-- /.nav-second-level -->

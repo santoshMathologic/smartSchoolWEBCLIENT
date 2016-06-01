@@ -9,7 +9,8 @@ angular.module('smartSchoolApp')
 				console.log("Inside view class diredctive Controller")
 
 
-
+                var uri = apiUrl + "/" + "class" + "/" + "classes";
+				
 				$scope.query = {
                     order: 'class_Name',
                     limit: 10,
@@ -17,9 +18,12 @@ angular.module('smartSchoolApp')
 
                 };
 
-				$http.get(apiUrl + "/" + "class" + "/" + "classes", { params: $scope.query })
-					.then(function (response) {
+				$http.get(uri, { params: $scope.query })
+					.then(
+						
+						function (response) {
 						$scope.classList = response.data.results;
+						$scope.isLoading = true;
 					});
 
 

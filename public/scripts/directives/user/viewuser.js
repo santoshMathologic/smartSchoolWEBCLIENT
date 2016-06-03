@@ -8,11 +8,11 @@ angular.module('smartSchoolApp')
 			controller: function ($scope, $http, UserAuthFactory, AuthenticationFactory) {
 				console.log("Inside view class diredctive Controller")
 
-
-                var uri = apiUrl + "/" + "class" + "/" + "classes";
+                $scope.users  = [];
+                var uri = apiUrl + "/" + "admin" + "/" + "users";
 
 				$scope.query = {
-                    order: 'class_Name',
+                    order: 'userName',
                     limit: 10,
                     page: 1,
 
@@ -21,7 +21,7 @@ angular.module('smartSchoolApp')
 				$scope.isLoading = false;
 				$http.get(uri, { params: $scope.query })
 					.then(function (response) {
-						$scope.classList = response.data.results;
+						$scope.users = response.data.results;
 
 					}).catch(function (err) {
 						

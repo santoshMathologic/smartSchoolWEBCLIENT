@@ -9,8 +9,8 @@ angular.module('smartSchoolApp')
 				console.log("Inside view class diredctive Controller")
 
                 $scope.users  = [];
-                var uri = apiUrl + "/" + "admin" + "/" + "users";
-
+                var userUri = apiUrl + "/" + "admin" + "/" + "users";
+				
 				$scope.query = {
                     order: 'userName',
                     limit: 10,
@@ -19,7 +19,7 @@ angular.module('smartSchoolApp')
                 };
 
 				$scope.isLoading = false;
-				$http.get(uri, { params: $scope.query })
+				$http.get(userUri, { params: $scope.query })
 					.then(function (response) {
 						$scope.users = response.data.results;
 

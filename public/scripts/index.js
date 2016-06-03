@@ -28,6 +28,7 @@ var app = angular
     'ui.bootstrap',
     'ngCookies',
     'ngResource',
+    'toaster',
     'angular-loading-bar',
   ]);
 

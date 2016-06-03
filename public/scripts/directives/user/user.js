@@ -5,16 +5,48 @@ angular.module('smartSchoolApp')
 			templateUrl: 'scripts/directives/user/user.html',
 			restrict: 'EA',
 			replace: true,
-			controller: function ($scope, filterFilter) {
+			controller: function ($scope, filterFilter, toaster) {
 				console.log("Inside class diredctive Controller")
-				
-				$scope.saveUser = function () {
+				$scope.roles = [];
+				var roleUri = apiUrl + "/" + "roles";
+				var createUserUri = apiUrl + "/" + "admin" + "/" + "user" + "/" + "create";
+				$http.get(roleUri).then(function (response) {
+					$scope.roles = response.data;
+					console.log($scope.roles);
 
-					console.log("Save");
+				}).catch(function (err) {
 
+				})
+					.finally(function () {
+						$scope.isLoading = true;
+					});
+
+				$scope.userdetails = {
+					userName: "",
+					firstName: "",
+					lastName: "",
+					password: "",
+					email: "",
+					roleCode: "",
+					userActive: "",
+					mobileNo: "",
 				}
 
-				
+				$scope.saveUser = function () {
+					$http.post(createUserUri, $scope.userdetails).then(function (response) {
+                        console.log("response" + response);
+
+						toaster.pop({
+							type: 'error',
+							title: 'Title text',
+							body: 'Body text',
+							timeout: 3000
+						});
+
+					});
+				}
+
+
 
 
 			},

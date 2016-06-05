@@ -13,7 +13,7 @@ angular.module('smartSchoolApp')
 				
 				$scope.query = {
                     order: 'userName',
-                    limit: 10,
+                    limit: 50,
                     page: 1,
 
                 };

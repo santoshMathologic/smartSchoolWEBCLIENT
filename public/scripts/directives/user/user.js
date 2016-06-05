@@ -21,6 +21,7 @@ angular.module('smartSchoolApp')
 						$scope.isLoading = true;
 					});
 
+
 				$scope.userdetails = {
 					userName: "",
 					firstName: "",
@@ -33,6 +34,9 @@ angular.module('smartSchoolApp')
 				}
 
 				$scope.saveUser = function () {
+					var hashedPassword = md5($scope.userdetails.password)
+					$scope.userdetails.password = hashedPassword;
+
 					$http.post(createUserUri, $scope.userdetails).then(function (response) {
                         console.log("response" + response);
 

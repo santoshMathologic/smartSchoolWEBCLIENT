@@ -13,7 +13,7 @@ angular.module('smartSchoolApp')
 				
 				$scope.query = {
                     order: 'userName',
-                    limit: 50,
+                    limit: 100,
                     page: 1,
 
                 };
@@ -31,7 +31,19 @@ angular.module('smartSchoolApp')
 					});
 
 
+                $scope.removeUser = function(user){
+					 $http.put(apiUrl + "/" + "admin" + "/" + "user" +"/"+ user._id).success(function (succRes) {
+                            var index = $scope.users.indexOf(user);
+                            $scope.users.splice(index, 1);
 
+                        }, function (errorResp) {
+                            console.log("Error in Deleting Plan" + errorResp)
+                        });
+					console.log(id);
+					
+					
+					
+				} 
 
 
 

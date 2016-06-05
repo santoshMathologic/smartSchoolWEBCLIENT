@@ -29,6 +29,7 @@ var app = angular
     'ngCookies',
     'ngResource',
     'toaster',
+    'angular-confirm',
     'angular-loading-bar',
   ]);
 

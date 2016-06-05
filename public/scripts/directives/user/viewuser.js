@@ -39,9 +39,6 @@ angular.module('smartSchoolApp')
                         }, function (errorResp) {
                             console.log("Error in Deleting Plan" + errorResp)
                         });
-					console.log(id);
-					
-					
 					
 				} 
 

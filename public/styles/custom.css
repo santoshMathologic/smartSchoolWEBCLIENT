@@ -22,3 +22,15 @@ div.others {
             background-color: #EEEEE4;
             box-shadow: 10px 10px 5px grey;
         }
+        
+.confirm-header-danger {
+    color: #fff;
+    background-color: #d9534f;
+    border-color: #d43f3a;
+}
+
+.confirm-footer-default {
+    color: #333;
+    background-color: #fff;
+    border-color: #ccc;
+}

@@ -8,7 +8,7 @@ angular.module('smartSchoolApp').directive('customPagination', function () {
         replace: true,
         controller: function ($scope, $http) {
 
-           console.log("Pagination Controller");
+            console.log("Pagination Controller");
 
         },
         link: function (scope, element, attrs) {
@@ -22,7 +22,14 @@ angular.module('smartSchoolApp').directive('customPagination', function () {
 
 
 
-});
+}).directive('stRatio', function () {
+    return {
+        link: function (scope, element, attr) {
+            var ratio = +(attr.stRatio);
+            element.css('width', ratio + '%');
+        }
+    };
+})
 
 
 

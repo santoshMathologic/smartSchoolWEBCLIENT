@@ -8,17 +8,11 @@ angular.module('smartSchoolApp').directive('trainStation', function () {
         replace: true,
         controller: function ($scope, $http) {
 
-            $scope.trainStations = [];
-             $scope.queryParam = {     // QueryParam object hold orderNo,limit,page and id
-                sortBy: 'trainNo',
-                limit: 20,
-                page: 1
-            }
+        
+         
 
-            $http.get(apiUrl + "/trainStations/getStations",{params: $scope.queryParam}).then(function (res) {
-                $scope.trainStations = res.data.results;
-           
-            });
+
+          
 
 
         },

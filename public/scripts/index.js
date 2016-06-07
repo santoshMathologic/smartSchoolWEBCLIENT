@@ -76,7 +76,8 @@ app.config(['$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider', funct
                 'scripts/directives/sidebar/sidebar.js',
                 'scripts/directives/sidebar/sidebar-search/sidebar-search.js',
                 'scripts/controllers/logout.js',
-                'scripts/directives/pagination/pagination.js'
+                'scripts/directives/pagination/pagination.js',
+                'scripts/directives/datatable/customtable.js'
                 
               ]
             }),

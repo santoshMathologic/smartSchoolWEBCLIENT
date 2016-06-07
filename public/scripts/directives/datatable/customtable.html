@@ -1,0 +1,102 @@
+<div>
+    <table class="table table-condensed table-hover table-striped">
+                <thead>
+                    <tr>
+                        <th>{{firstHeader}}</th>
+                        <th>{{secondHeader}}</th>
+                        <th>{{thirdHeader}}</th>
+                        <th>{{forthHeader}}</th>
+                        <th>{{fifthHeader}}</th>
+                        <th>{{sixthHeader}}</th>
+                        <th>{{seventhHeader}}</th>
+                        <th>{{eightHeader}}</th>
+                        <th>{{ninthHeader}}</th>
+                        <th>{{tenthHeader}}</th>
+                    </tr>
+                </thead>
+
+                <thead>
+                    <tr>
+                        <th>
+                            <div class="search">
+                                <i class="fa fa-search"></i>
+                                <input st-ratio="80" class="form-control input-sm" type="text" ng-model="sTrainNo" placeholder="TrainNo"  />
+                            </div>
+                        </th>
+                        <th>
+                            <div class="search">
+                                <i class="fa fa-search"></i>
+                                <input st-ratio="80" class="form-control input-sm" type="text" ng-model="sTrainNo" placeholder="code" size="10" />
+                            </div>
+                        </th>
+                        <th>
+                            <div class="search">
+                                <i class="fa fa-search"></i>
+                                <input class="form-control input-sm" type="text" ng-model="sTrainNo" placeholder="arrival" size="10" />
+                            </div>
+                        </th>
+                        <th>
+                            <div class="search">
+                                <i class="fa fa-search"></i>
+                                <input class="form-control input-sm" type="text" ng-model="sTrainNo" placeholder="departure" size="10" />
+                            </div>
+                        </th>
+                        <th>
+                            <div class="search">
+                                <i class="fa fa-search"></i>
+                                <input class="form-control input-sm" type="text" ng-model="sTrainNo" placeholder="ArrivalMin" size="10" />
+                            </div>
+                        </th>
+                        <th>
+                            <div class="search">
+                                <i class="fa fa-search"></i>
+                                <input class="form-control input-sm" type="text" ng-model="sTrainNo" placeholder="depMin" size="10" />
+                            </div>
+                        </th>
+                        <th>
+                            <div class="search">
+                                <i class="fa fa-search"></i>
+                                <input class="form-control input-sm" type="text" ng-model="sTrainNo" placeholder="distance" size="10" />
+                            </div>
+                        </th>
+                        <th>
+                            <div class="search">
+                                <i class="fa fa-search"></i>
+                                <input class="form-control input-sm" type="text" ng-model="sTrainNo" placeholder="locoType" size="10" />
+                            </div>
+                        </th>
+                        <th>
+                            <div class="search">
+                                <i class="fa fa-search"></i>
+                                <input class="form-control input-sm" type="text" ng-model="sTrainNo" placeholder="day-of-jour" size="10" />
+                            </div>
+                        </th>
+                    </tr>
+                </thead>
+
+
+
+                <tbody>
+                    <tr ng-repeat="train in trainStations">
+                        <td>{{train.trainNo}}</td>
+                        <td>{{train.stationCode}}</td>
+                        <td>{{train.arrivalTime}}</td>
+                        <td>{{train.departureTime}}</td>
+                        <td>{{train.arrivalMinutes}}</td>
+                        <td>{{train.departureMinutes}}</td>
+                        <td>{{train.distance}}</td>
+                        <td>{{train.locoType}}</td>
+                        <td>{{train.dayOfJourney}}</td>
+                    </tr>
+
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="9" class="text-center">
+                            <custom-pagination></custom-pagination>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+    
+    </div>

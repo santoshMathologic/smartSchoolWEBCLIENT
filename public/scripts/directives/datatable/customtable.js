@@ -14,30 +14,28 @@ angular.module('smartSchoolApp')
                 'seventhHeader': "@",
                 'eightHeader': "@",
                 'ninthHeader': "@",
-                'tenthHeader': "@"
+                'tenthHeader': "@",
+                listTitle : '=listTitle'
             },
             replace: true,
 
-            controller: function ($scope, $http) {
+            controller: function ($scope, $http, $rootScope) {
+                $scope.resultList = [];
+                var customUrl = $scope.$parent.trainStation;
+                var customQueryParam = {};
+                customQueryParam = $scope.$parent.queryParam;
+              
+                $scope.customGet = function () {
+                    $http.get(customUrl, { params: customQueryParam }).then(function (response) {
+                        $scope.resultList = response.data.results;
+                        $rootScope.$emit($scope.listTitle,$scope.resultList);
 
-               
 
+                    });
 
-                $scope.trainStations = [];
-                $scope.queryParam = {     // QueryParam object hold orderNo,limit,page and id
-                    sortBy: 'trainNo',
-                    limit: 20,
-                    page: 1
                 }
 
-                $http.get(apiUrl + "/trainStations/getStations", { params: $scope.queryParam }).then(function (res) {
-                    $scope.trainStations = res.data.results;
-
-                });
-
-                var parvar = $scope.$parent.first_header;
-                console.log(parvar);
-
+                $scope.customGet();
 
             },
 

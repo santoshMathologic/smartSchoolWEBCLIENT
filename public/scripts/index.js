@@ -31,10 +31,14 @@ var app = angular
     'toaster',
     'angular-confirm',
     'angular-loading-bar',
+    '720kb.tooltips',
+    'ng-cooltip',
+    'ngDropover'
   ]);
 
 
-app.config(['$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider', function ($stateProvider, $urlRouterProvider, $ocLazyLoadProvider) {
+app.config(['$stateProvider', '$urlRouterProvider','$ocLazyLoadProvider', function ($stateProvider, $urlRouterProvider, $ocLazyLoadProvider) {
+
 
   $ocLazyLoadProvider.config({
     debug: false,
@@ -78,7 +82,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider', funct
                 'scripts/controllers/logout.js',
                 'scripts/directives/pagination/pagination.js',
                 'scripts/directives/datatable/customtable.js'
-                
+
               ]
             }),
             $ocLazyLoad.load(
@@ -136,39 +140,39 @@ app.config(['$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider', funct
       }
     })
     .state('dashboard.userPlan',
+    {
+      template: '<user-plan></user-plan>',
+      url: '/userPlan',
+      resolve: {
+        loadMyDirectives: function ($ocLazyLoad) {
+          return $ocLazyLoad.load(
             {
-                template: '<user-plan></user-plan>',
-                url: '/userPlan',
-                resolve: {
-                    loadMyDirectives: function($ocLazyLoad) {
-                        return $ocLazyLoad.load(
-                            {
-                                name: 'smartSchoolApp',
-                                files: [
-                                    'scripts/directives/userPlan/userPlan.js',
-                                    
-                                ]
-                            })
-                    }
-                }
+              name: 'smartSchoolApp',
+              files: [
+                'scripts/directives/userPlan/userPlan.js',
+
+              ]
             })
-             .state('dashboard.trainStation',
+        }
+      }
+    })
+    .state('dashboard.trainStation',
+    {
+      template: '<train-station></train-station>',
+      url: '/trainStation',
+      resolve: {
+        loadMyDirectives: function ($ocLazyLoad) {
+          return $ocLazyLoad.load(
             {
-                template: '<train-station></train-station>',
-                url: '/trainStation',
-                resolve: {
-                    loadMyDirectives: function($ocLazyLoad) {
-                        return $ocLazyLoad.load(
-                            {
-                                name: 'smartSchoolApp',
-                                files: [
-                                    'scripts/directives/trainStations/trainStation.js',
-                                    
-                                ]
-                            })
-                    }
-                }
+              name: 'smartSchoolApp',
+              files: [
+                'scripts/directives/trainStations/trainStation.js',
+
+              ]
             })
+        }
+      }
+    })
     .state('dashboard.form', {
       templateUrl: 'views/form.html',
       url: '/form'
@@ -275,7 +279,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider', funct
         }
       }
     })
-    . state('dashboard.user', {
+    .state('dashboard.user', {
       templateUrl: 'views/dashboard/user.tmpl.html',
       url: '/user',
       controller: 'userCtrl',
@@ -292,8 +296,8 @@ app.config(['$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider', funct
         }
       }
     })
-    
-    
+
+
 
   $urlRouterProvider.otherwise('/login');
 }]);

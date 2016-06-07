@@ -3,5 +3,11 @@
 .btn-yellow {
     color: #fff;
     background-color: darkorange;
-    border-color: orangered;
+    border-color: #d66a00;
+}
+
+.btn-yellow:hover {
+    color: #fff;
+    background-color:#EE7600;
+    border-color: #d66a00;
 }

@@ -75,7 +75,9 @@ app.config(['$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider', funct
                 'scripts/directives/header/header-notification/header-notification.js',
                 'scripts/directives/sidebar/sidebar.js',
                 'scripts/directives/sidebar/sidebar-search/sidebar-search.js',
-                'scripts/controllers/logout.js'
+                'scripts/controllers/logout.js',
+                'scripts/directives/pagination/pagination.js'
+                
               ]
             }),
             $ocLazyLoad.load(
@@ -132,6 +134,40 @@ app.config(['$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider', funct
         }
       }
     })
+    .state('dashboard.userPlan',
+            {
+                template: '<user-plan></user-plan>',
+                url: '/userPlan',
+                resolve: {
+                    loadMyDirectives: function($ocLazyLoad) {
+                        return $ocLazyLoad.load(
+                            {
+                                name: 'smartSchoolApp',
+                                files: [
+                                    'scripts/directives/userPlan/userPlan.js',
+                                    
+                                ]
+                            })
+                    }
+                }
+            })
+             .state('dashboard.trainStation',
+            {
+                template: '<train-station></train-station>',
+                url: '/trainStation',
+                resolve: {
+                    loadMyDirectives: function($ocLazyLoad) {
+                        return $ocLazyLoad.load(
+                            {
+                                name: 'smartSchoolApp',
+                                files: [
+                                    'scripts/directives/trainStations/trainStation.js',
+                                    
+                                ]
+                            })
+                    }
+                }
+            })
     .state('dashboard.form', {
       templateUrl: 'views/form.html',
       url: '/form'

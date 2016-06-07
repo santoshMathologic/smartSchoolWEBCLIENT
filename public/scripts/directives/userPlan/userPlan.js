@@ -22,7 +22,13 @@ angular.module('smartSchoolApp').directive('userPlan', function () {
         
       }); 
 
-      console.log("Scope vales", $scope);
+      
+      $scope.removeUserPlan = function(){
+console.log("Scope vales", $scope);
+
+
+
+      }
 
     },
     link: function (scope, element, attrs) {

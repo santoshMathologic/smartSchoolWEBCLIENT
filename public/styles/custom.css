@@ -65,3 +65,8 @@ div.others {
   text-align: center;
   margin-top: 30px;
 }
+
+#myModal .modal-dialog
+{
+  width: 70%;
+}

@@ -33,7 +33,10 @@ var app = angular
     'angular-loading-bar',
     '720kb.tooltips',
     'ng-cooltip',
-    'ngDropover'
+    'ngDropover',
+    'angucomplete-alt',
+    'ngLetterAvatar',
+    'ngDialog'
   ]);
 
 
@@ -179,7 +182,21 @@ app.config(['$stateProvider', '$urlRouterProvider','$ocLazyLoadProvider', functi
     })
     .state('dashboard.blank', {
       templateUrl: 'views/pages/blank.html',
-      url: '/blank'
+      url: '/blank',
+      controller:'blankCtrl',
+       resolve: {
+        loadMyDirectives: function ($ocLazyLoad) {
+          return $ocLazyLoad.load(
+            {
+              name: 'smartSchoolApp',
+              files: [
+                'scripts/controllers/blank.js',
+
+              ]
+            })
+        }
+      }
+
     })
     .state('dashboard.chart', {
       templateUrl: 'views/chart.html',

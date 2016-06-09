@@ -9,6 +9,8 @@ angular.module('smartSchoolApp')
 				console.log("Inside class diredctive Controller")
 				$scope.selectClass = "";
 				$scope.showOthers = false;
+				$scope.sectionBool = false;
+
 				$scope.selectMenu = [
 					{ id: '1', name: 'Class I' },
 					{ id: '2', name: 'Class II' },
@@ -23,54 +25,64 @@ angular.module('smartSchoolApp')
 					{ id: '11', name: 'Others' },
 
 				];
-				$scope.customField = { customFieldSet: true };
+
+
+
+				function getSections() {
+					$scope.sections = [
+						{ id: '1', sectionname: 'A' },
+						{ id: '2', sectionname: 'B' },
+						{ id: '3', sectionname: 'C' },
+						{ id: '4', sectionname: 'D' },
+						{ id: '5', sectionname: 'E' },
+						{ id: '6', sectionname: 'F' },
+						{ id: '7', sectionname: 'G' },
+						{ id: '8', sectionname: 'H' },
+						{ id: '9', sectionname: 'I' },
+						{ id: '10', sectionname: 'J' },
+						{ id: '11', sectionname: 'K' },
+
+					];
+
+				}
+				getSections();
+				$scope.sectionArray = [];
+				$scope.addSection = function () {
+					$scope.sections = {};
+
+					$scope.sections.sectionName = $scope.selectSection;
+					$scope.sectionArray.push($scope.sections);
+					getSections();
+				}
+
+
 				$scope.changeClass = function () {
 					console.log("select Change" + $scope.selectClass.name);
 
 					if ($scope.selectClass.name == 'Others') {
 						$scope.showOthers = !$scope.showOthers;
+						$scope.sectionBool = !$scope.sectionBool;
+						///	$scope.sectionBool = true; 
 
 					} else {
 						//$scope.showOthers = ($scope.showOthers == true) ? true:false;
+						$scope.sectionBool = true;
 						$scope.showOthers = false;
 					}
 
 				}
 
+
+				$scope.sectionRemove = function (section) {
+					$scope.sectionArray.splice($scope.sectionArray.indexOf(section), 1)
+				}
 				$scope.saveClass = function () {
 
 					console.log("" + $scope.selectClass);
 
 				}
 
-				// fruits
-				$scope.fruits = [
-					{ name: 'Section_1', selected: true },
-					{ name: 'Section_2', selected: false },
-					{ name: 'Section_3', selected: true },
-					{ name: 'Section_4', selected: false },
-					{ name: 'Section_5', selected: false },
-					{ name: 'Section_6', selected: false },
-					{ name: 'Section_7', selected: false },
-					{ name: 'Section_8', selected: false },
-					{ name: 'Section_9', selected: false },
-					{ name: 'Section_10', selected: false }
-				];
 
-				// selected fruits
-				$scope.selection = [];
-
-				// helper method to get selected fruits
-				$scope.selectedFruits = function selectedFruits() {
-					return filterFilter($scope.fruits, { selected: true });
-				};
-
-				// watch fruits for changes
-				$scope.$watch('fruits|filter:{selected:true}', function (nv) {
-					$scope.selection = nv.map(function (fruit) {
-						return fruit.name;
-					});
-				}, true);
 
 
 			},

@@ -1,4 +1,7 @@
 <div>
+
+
+
     <div class="row">
         <div class="col-lg-12">
             <h2 class="page-header">
@@ -10,108 +13,145 @@
 
     <div class="row">
         <div class="col-lg-12">
-            <div class="table-responsive">
-                <table class="table table-condensed table-hover table-striped">
-                    <thead>
-                        <tr>
-                            <th>slNo</th>
-                            <th>Plan</th>
-                            <th>Owner</th>
-                            <th>createOn</th>
-                            <th>Co-planner</th>
-                            <th>Locked</th>
-                            <th>Complete</th>
-                            <th>UnderReview</th>
-                            <th>LinkGenerated</th>
-                            <th>Reviewer</th>
-                            <th>Action</th>
-
-                        </tr>
-                    </thead>
-
-                    <thead>
-                        <tr>
-
-                            <th>&nbsp;</th>
-                            <th>
-                                <div class="search">
-                                    <i class="fa fa-search"></i>
-                                    <input st-ratio="80" class="form-control input-sm" type="text" ng-model="sTrainNo" placeholder="TrainNo" />
-                                </div>
-                            </th>
-                            <th>
-                                <div class="search">
-                                    <i class="fa fa-search"></i>
-                                    <input st-ratio="80" class="form-control input-sm" type="text" ng-model="sTrainNo" placeholder="code" size="10" />
-                                </div>
-                            </th>
-                            <th>
-                                <div class="search">
-                                    <i class="fa fa-search"></i>
-                                    <input class="form-control input-sm" type="text" ng-model="sTrainNo" placeholder="arrival" size="10" />
-                                </div>
-                            </th>
-                            <th>
-                                <div class="search">
-                                    <i class="fa fa-search"></i>
-                                    <input class="form-control input-sm" type="text" ng-model="sTrainNo" placeholder="departure" size="10" />
-                                </div>
-                            </th>
-                            <th>
-                                <div class="search">
-                                    <i class="fa fa-search"></i>
-                                    <input class="form-control input-sm" type="text" ng-model="sTrainNo" placeholder="ArrivalMin" size="10" />
-                                </div>
-                            </th>
-                            <th>
-                                <div class="search">
-                                    <i class="fa fa-search"></i>
-                                    <input class="form-control input-sm" type="text" ng-model="sTrainNo" placeholder="depMin" size="10" />
-                                </div>
-                            </th>
-                            <th>
-                                <div class="search">
-                                    <i class="fa fa-search"></i>
-                                    <input class="form-control input-sm" type="text" ng-model="sTrainNo" placeholder="distance" size="10" />
-                                </div>
-                            </th>
-                            <th>
-                                <div class="search">
-                                    <i class="fa fa-search"></i>
-                                    <input class="form-control input-sm" type="text" ng-model="sTrainNo" placeholder="locoType" size="10" />
-                                </div>
-                            </th>
-
-                        </tr>
-                    </thead>
 
 
 
-                    <tbody>
-                        <tr ng-repeat="userplan in userPlanLists">
-                            <td>{{$index+1}}</td>
-                            <td>{{userplan.planName}}</td>
-                            <td>{{userplan.owner}}</td>
-                            <td>{{userplan.createdTime | date : 'shortDate'}}</td>
 
-                            <td>
-                                <div ng-repeat="co in userplan.coPlanners">
-                                    {{co}}</br>
-                                </div>
-
-                            </td>
-
-                            <td>{{userplan.isLinkGenerated}}</td>
-                            <td>{{userplan.isLocked}}</td>
-                            <td>{{userplan.isUnderReview}}</td>
-                            <td>{{userplan.isComplete}}</td>
-                            <td>{{userplan.reviewer}}</td>
+            <div class="panel panel-default">
+                <div class="panel-heading">List of UserPlan
 
 
-                            <td>
+                    <div class="form-group pull-right">
+
+                        <label class="col-sm-8 control-label"> Items Per Page (1-100) </label>
+                        <div class="col-sm-4">
+                            <input name="itemsperpage" class="form-control pull-right" min=1 max=100 value=5 step=1 type="number" ng-model-options="{ debounce: 1000 }"
+                                ng-model="itemsPerPage">
+                        </div>
+                    </div>
 
 
-                                <code class="titip-left btn btn-primary btn-sm" ng-click="removeUserPlan()" data-toggle="modal" data-target="#myModal">
+
+                </div>
+                <div class="panel-body">
+
+
+                    <table class="table table-condensed table-hover table-striped">
+                        <thead>
+                            <tr>
+                                <th>slNo</th>
+                                <th>Plan</th>
+                                <th>Owner</th>
+                                <th>createOn</th>
+                                <th>Co-planner</th>
+                                <th>Locked</th>
+                                <th>Complete</th>
+                                <th>UnderReview</th>
+                                <th>LinkGenerated</th>
+                                <th>Reviewer</th>
+                                <th>Action</th>
+
+                            </tr>
+                        </thead>
+
+                        <thead>
+                            <tr>
+
+                                <th>&nbsp;</th>
+                                <th>
+                                    <form name="filter.form">
+                                        <div class="search">
+                                            <i class="fa fa-search"></i>
+                                            <input st-ratio="80" class="form-control input-sm" type="text" ng-model="query.planName" ng-model-options="planName.options"
+                                                placeholder="plan" />
+                                        </div>
+                                    </form>
+                                </th>
+                                <th>
+                                    <form name="filter.form">
+                                        <div class="search">
+                                            <i class="fa fa-search"></i>
+                                            <input st-ratio="80" class="form-control input-sm" type="text" ng-model="query.owner" ng-model-options="owner.options" placeholder="owner"
+                                            />
+                                        </div>
+                                    </form>
+                                </th>
+                                <th>
+                                    <div class="search">
+                                        <i class="fa fa-search"></i>
+                                        <input class="form-control input-sm" type="text" ng-model="query.owner" ng-model-options="owner.options" placeholder="arrival"
+                                        />
+                                    </div>
+                                </th>
+                                <th>
+                                    <div class="search">
+                                        <i class="fa fa-search"></i>
+                                        <input class="form-control input-sm" type="text" ng-model="query.createdTime" ng-model-options="createdTime.options" placeholder="departure"
+                                            size="10" />
+                                    </div>
+                                </th>
+                                <th>
+                                    <div class="search">
+                                        <i class="fa fa-search"></i>
+                                        <input class="form-control input-sm" type="text" ng-model="query.coPlanners" ng-model-options="coPlanners.options" placeholder="ArrivalMin"
+                                            size="10" />
+                                    </div>
+                                </th>
+                                <th>
+                                    <div class="search">
+                                        <i class="fa fa-search"></i>
+                                        <input class="form-control input-sm" type="text" ng-model="query.isLocked" ng-model-options="isLocked.options" placeholder="depMin"
+                                            size="10" />
+                                    </div>
+                                </th>
+                                <th>
+                                    <div class="search">
+                                        <i class="fa fa-search"></i>
+                                        <input class="form-control input-sm" type="text" ng-model="query.isUnderReview" ng-model-options="isUnderReview.options"
+                                            placeholder="distance" size="10" />
+                                    </div>
+                                </th>
+                                <th>
+                                    <div class="search">
+                                        <i class="fa fa-search"></i>
+                                        <input class="form-control input-sm" type="text" ng-model="query.isComplete" ng-model-options="isComplete.options" placeholder="locoType"
+                                            size="10" />
+                                    </div>
+                                </th>
+
+                            </tr>
+                        </thead>
+
+
+
+                        <tbody>
+                            <tr ng-repeat="userplan in userPlanLists">
+                                <td>{{$index+1}}</td>
+                                <td>{{userplan.planName}}</td>
+                                <td>{{userplan.owner}}</td>
+                                <td>{{userplan.createdTime | date : 'shortDate'}}</td>
+
+                                <td>
+                                    <!-- <div ng-repeat="co in userplan.coPlanners">
+                                        {{co}}</br>
+                                    </div>
+
+                                !-->
+                                    &nbps;
+
+                                </td>
+
+                                <td>{{userplan.isLinkGenerated}}</td>
+                                <td>{{userplan.isLocked}}</td>
+                                <td>{{userplan.isUnderReview}}</td>
+                                <td>{{userplan.isComplete}}</td>
+                                <td>{{userplan.reviewer}}</td>
+
+
+                                <td>
+
+
+                                    <code class="titip-left btn btn-primary btn-sm" ng-click="removeUserPlan()" data-toggle="modal" data-target="#myModal">
                             <i class="fa fa-share" aria-hidden="true"></i>
                                  <span class="titip-content thick-border">
                                     <strong>Hello</strong> this is an active content
@@ -122,18 +162,7 @@
 
 
 
-                                <code class="titip-left btn btn-success btn-sm" ng-click="removeUserPlan()">
-                           <i class="fa fa-clipboard" aria-hidden="true"></i>
-                                 <span class="titip-content thick-border">
-                                    <strong>Hello</strong> this is an active content
-                                        <br> <span class="text-warning">you can use custom</span> html,
-                                            <br> etc. in content element
-                             </span>
-                          </code>
-
-
-
-                                <code class="titip-left btn btn-yellow btn-sm" ng-click="removeUserPlan()">
+                                    <code class="titip-left btn btn-success btn-sm" ng-click="removeUserPlan()">
                            <i class="fa fa-clipboard" aria-hidden="true"></i>
                                  <span class="titip-content thick-border">
                                     <strong>Hello</strong> this is an active content
@@ -145,8 +174,16 @@
 
 
 
+                                    <button type="button" class="btn btn-yellow btn-sm" ng-click="removeUserPlan(userplan)">
+                                    <i class="fa fa-clipboard" aria-hidden="true"></i></button>
 
-                                <code class="titip-bottom btn btn-danger btn-sm" ng-click="removeUserPlan()">
+
+
+
+
+
+
+                                    <code class="titip-bottom btn btn-danger btn-sm" ng-click="removeUserPlan()">
                              <i class="fa fa-trash" aria-hidden="true"></i>
                                  <span class="titip-content thick-border">
                                     <strong>Hello</strong> this is an active content
@@ -155,28 +192,39 @@
                              </span>
                           </code>
 
+                                </td>
+
+
+                            </tr>
+
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="9" class="text-center">
+                                    <custom-pagination></custom-pagination>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
 
 
 
-
-
-
-
-                            </td>
-
-
-                        </tr>
-
-                    </tbody>
-                    <tfoot>
-                        <tr>
-                            <td colspan="9" class="text-center">
-                                <custom-pagination></custom-pagination>
-                            </td>
-                        </tr>
-                    </tfoot>
-                </table>
+                </div>
             </div>
+
+
+
+
+
+            <div angucomplete-alt id="ex2" placeholder="Search people" pause="500" selected-object="selectedPerson" local-data="users"
+                local-search="searchQuery" search-fields="firstname" text-searching="searcing text" focus-in="focusIn()" focus-out="focusOut()"
+                auto-match="true" text-no-results="Not found" focus-first="true" description-field="firstname,lastname" title-field="firstname,lastname"
+                description-field="twitter" minlength="1" input-class="form-control form-control-small" match-class="highlight"
+            />
+
+            <small><ng-letter-avatar data="firstname" rotatedeg="0" shape="round"></ng-letter-avatar></small>
+
+            <i class="fa fa-train" aria-hidden="true"></i>
 
         </div>
     </div>
@@ -194,29 +242,33 @@
                 </div>
                 <div class="modal-body">
 
-                    <tabs>
-                        <pane title="Send For Review">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">Panel Heading</div>
-                                <div class="panel-body">
-                                    <h1>Send for Review</h1>
-                                </div>
-                            </div>
-                        </pane>
-                        <pane title="Share Plan">
+                    <ul class="nav nav-tabs">
+                        <li ng-class="{'active' : activeTab==1}"> <a href="" ng-click="setActiveTab(1)">One</a></li>
+                        <li ng-class="{'active' : activeTab==2}"> <a href="" ng-click="setActiveTab(2)">Two</a></li>
+                        <li ng-class="{'active' : activeTab==3}"> <a href="" ng-click="setActiveTab(3)">Three</a></li>
+                    </ul>
 
-                            <div class="panel panel-default">
-                                <div class="panel-heading">Panel Heading</div>
-                                <div class="panel-body">
-                                    <h1>Share Plan</h1>
-                                </div>
-                            </div>
+                    <div class="tab-content">
+                        <div ng-class="{'tab-pane active': activeTab===1 , 'tab-pane' : activeTab !==1}">
+
+                            Panels 1
+
+                            <img src="http://angularjs.learnwebtutorials.com/graphics/20/more-complex-ng-class.jpg">
+
+                        </div>
+                        <div ng-class="{'tab-pane active': activeTab===2 , 'tab-pane' : activeTab !==2}">
+
+                            Panels 2
+
+                        </div>
+                        <div ng-class="{'tab-pane active': activeTab===3 , 'tab-pane' : activeTab !==3}">
+
+                            Panels 3
 
 
+                        </div>
 
-
-                        </pane>
-                    </tabs>
+                    </div>
 
 
 

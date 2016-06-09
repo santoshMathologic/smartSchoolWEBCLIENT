@@ -30,6 +30,35 @@
 		</div>
 
 
+
+		<ul class="nav nav-tabs">
+			<li ng-class="{'active' : activeTab==1}"> <a href="" ng-click="setActiveTab(1)">One</a></li>
+			<li ng-class="{'active' : activeTab==2}"> <a href="" ng-click="setActiveTab(2)">Two</a></li>
+			<li ng-class="{'active' : activeTab==3}"> <a href="" ng-click="setActiveTab(3)">Three</a></li>
+		</ul>
+
+		<div class="tab-content">
+			<div ng-class="{'tab-pane active': activeTab===1 , 'tab-pane' : activeTab !==1}">
+
+				Panels 1
+
+				<img src="http://angularjs.learnwebtutorials.com/graphics/20/more-complex-ng-class.jpg">
+
+			</div>
+			<div ng-class="{'tab-pane active': activeTab===2 , 'tab-pane' : activeTab !==2}">
+
+				Panels 2
+
+			</div>
+			<div ng-class="{'tab-pane active': activeTab===3 , 'tab-pane' : activeTab !==3}">
+
+				Panels 3
+
+
+			</div>
+
+		</div>
+
 		<!-- /.col-lg-12 -->
 	</div>
 	<!-- /.row -->

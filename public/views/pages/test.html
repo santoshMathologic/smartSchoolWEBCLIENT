@@ -29,6 +29,19 @@
 			}
 		</style>
 
+		<div class="col-xs-4">
+			<label for="search">Search:</label>
+			<input ng-model="q" id="search" class="form-control" placeholder="Title">
+		</div>
+
+		<div class="col-xs-4">
+			<h3>Current Page: {{ currentPage }}</h3>
+		</div>
+
+		<div class="col-xs-4">
+			<label for="search">items per page:</label>
+			<input type="number" min="1" max="100" class="form-control" ng-model="pageSize">
+		</div>
 
 		<table class="table table-hover table-condensed">
 			<thead>
@@ -40,7 +53,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr ng-repeat="user in userLists">
+				<tr dir-paginate="user in userLists | filter:q | itemsPerPage : pageSize" current-page="currentPage">
 					<td>{{user.id}} </td>
 					<td>{{user.title}}</td>
 					<td>{{user.body}} </td>
@@ -58,9 +71,10 @@
 
 			</tbody>
 		</table>
+		<dir-pagination-controls boundary-links="true" on-page-change="pageChangeHandler(newPageNumber)" template-url="views/pages/dirPagination.tpl.html"></dir-pagination-controls>
 
 
-<div cg-busy="{promise:myPromise,message:'Loading',backdrop:false,templateUrl:'views/pages/myAwesomeTemplate.html',delay:300,minDuration:700}"></div>
+		<div cg-busy="{promise:myPromise,message:'Loading',backdrop:false,templateUrl:'views/pages/myAwesomeTemplate.html',delay:300,minDuration:700}"></div>
 
 
 

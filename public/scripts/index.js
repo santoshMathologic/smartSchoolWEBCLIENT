@@ -38,7 +38,8 @@ var app = angular
     'ngLetterAvatar',
     'ngDialog',
     'ngAnimate',
-    'cgBusy'
+    'cgBusy',
+    'angularUtils.directives.dirPagination'
   ]);
 
 

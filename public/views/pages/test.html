@@ -5,13 +5,56 @@
 		</div>
 
 
-	
+		<style>
+			th {
+				background: green;
+				color: white;
+				box-shadow: 2px 4px 1px brown;
+			}
+			
+			th:hover {
+				background: green;
+				color: white;
+				box-shadow: 2px 4px 1px brown;
+			}
+		</style>
+
+
+		<table class="table table-hover table-condensed">
+			<thead>
+				<tr>
+					<th>No</th>
+					<th>Title</th>
+					<th>Description</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="user in userLists">
+					<td>{{user.id}} </td>
+					<td>{{user.title}}</td>
+					<td>{{user.body}} </td>
+					<td style="width:100px">
+
+						<a href="" ng-click="remove(user)">
+							<i class="fa fa-trash fa-2x" aria-hidden="true"></i>
+						</a>
+						<a href="" ng-click="">
+							<i class="fa fa-pencil-square fa-2x" aria-hidden="true"></i>
+						</a>
+					</td>
+				</tr>
+
+
+			</tbody>
+		</table>
 
 
 
 
 
-	
+
+
 
 		<!-- /.col-lg-12 -->
 	</div>

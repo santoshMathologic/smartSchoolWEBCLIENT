@@ -1,10 +1,13 @@
-<div class="row userPlans">
+<div class="row">
 
 
     <style>
-        .userPlans a:focus,
-        .userPlans a:hover {
-            text-decoration: none;
+        tr.ng-enter {
+            animation: fadeIn 1s;
+        }
+        
+        tr.ng-leave {
+            animation: fadeOut 1s;
         }
     </style>
 
@@ -12,9 +15,9 @@
     <div class="row">
         <div class="col-lg-12">
             <h2 class="page-header">
-				List of Class
-					
-			</h2>
+                List of Class
+
+            </h2>
         </div>
     </div>
     <div class="col-lg-12">
@@ -76,10 +79,7 @@
                                 <td>
 
 
-                                    <button 
-                                        class="btn btn-xs btn-success" 
-                                        ng-click="selectUserPlan(userplan)"
-                                        data-toggle="modal" data-target="#myModal">
+                                    <button class="btn btn-xs btn-success" ng-click="selectUserPlan(userplan)" data-toggle="modal" data-target="#myModal">
                                         
                                            <i class="fa fa-pencil" aria-hidden="true"></i> 
                                             
@@ -88,8 +88,8 @@
                                             
                                             <i class="fa fa-trash" aria-hidden="true"></i>
                                         </button>
-                                    <button class="btn btn-xs btn-danger fa fa-remove" ng-click="deleteUserPlan(userplan)" confirm="Are you sure to delete !!!"
-                                        confirm-settings="{size: 'md'}" confirm-header-class="confirm-header-danger " confirm-footer-class="confirm-footer-default"
+                                    <button class="btn btn-xs btn-danger fa fa-remove" ng-click="removeClass(c)" confirm="Are you sure to delete !!!" confirm-settings="{size: 'md'}"
+                                        confirm-header-class="confirm-header-danger " confirm-footer-class="confirm-footer-default"
                                         confirm-ok-button-class="btn-danger" confirm-cancel-button-class="btn-default" confirm-title="Confirm Deletion!!"
                                         confirm-ok="Yes" confirm-cancel="No" title="Remove"> </button>
 
@@ -100,16 +100,15 @@
 
                         </tbody>
                     </table>
-                    
+
                     <tbody ng-show="isLoading">
-							<tr style="height: 200px">
-								<td colspan="13" class="text-center"><i
-									class="fa fa-spinner fa-3x fa-pulse" style="color:blue"> </i> Loading classes.....
-									</td>
-							</tr>
-				</tbody>
-                    
-                    
+                        <tr style="height: 200px">
+                            <td colspan="13" class="text-center"><i class="fa fa-spinner fa-3x fa-pulse" style="color:blue"> </i> Loading classes.....
+                            </td>
+                        </tr>
+                    </tbody>
+
+
                 </div>
 
             </div>
@@ -121,7 +120,7 @@
 
     <!-- Modal !-->
 
-    
+
 
     <!-- Modal -->
     <div id="myModal" class="modal fade" role="dialog">

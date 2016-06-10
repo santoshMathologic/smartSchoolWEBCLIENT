@@ -10,29 +10,32 @@
                         <fieldset>
                             <div class="input-group">
                                 <span class="input-group-addon" style="border-radius:0px"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                                <input style="border-radius:0px" class="form-control" name="userName" ng-model="userObj.userName" type="text" autofocus required>
+                                <input style="border-radius:0px" ng-model-options="{updateOn: 'blur',debounce : 10000}" class="form-control" name="userName" ng-model="userObj.userName"
+                                    type="text" autofocus required>
                                 <span ng-show="myForm.userName.$touched && myForm.userName.$invalid">The name is required.</span>
-                            </input>
+                                </input>
                             </div>
                             <br>
                             <div class="input-group">
-                                
-                               <span class="input-group-addon" style="border-radius:0px"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-                                <input style="border-radius:0px" class="form-control" name="password" ng-model="userObj.password" type="password" required>
+
+                                <span class="input-group-addon" style="border-radius:0px"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                                <input style="border-radius:0px" ng-model-options="{updateOn: 'blur',debounce : 10000}" class="form-control" name="password" ng-model="userObj.password"
+                                    type="password" required>
                                 <span ng-show="myForm.password.$touched && myForm.password.$invalid">The password is required.</span>
-                                
                                 </input>
-                                
+
                             </div>
+
+                                       
+
                             <div class="checkbox">
                                 <label>
                                     <input name="remember" type="checkbox" value="Remember Me">Remember Me
                                 </label>
                             </div>
                             <!-- Change this to a button or input when using this as a form -->
-                             <input type="submit" value="Login" ng-click="doLogin()" class="btn btn-lg btn-danger btn-block" style="border-radius:0px"
-                            
-                            ng-disabled="myForm.userName.$dirty && myForm.userName.$invalid ||
+                            <input type="submit" value="Login" ng-click="doLogin()" class="btn btn-lg btn-danger btn-block" style="border-radius:0px"
+                                ng-disabled="myForm.userName.$dirty && myForm.userName.$invalid ||
                             myForm.password.$dirty && myForm.password.$invalid"></input>
                         </fieldset>
                     </form>

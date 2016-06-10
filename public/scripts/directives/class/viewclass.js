@@ -24,12 +24,17 @@ angular.module('smartSchoolApp')
 						$scope.classList = response.data.results;
 
 					}).catch(function (err) {
-						
+
 					})
 					.finally(function () {
 						$scope.isLoading = true;
 					});
 
+				$scope.removeClass = function (classObj) {
+
+					$scope.classList.splice($scope.classList.indexOf(classObj), 1);
+
+				}
 
 
 

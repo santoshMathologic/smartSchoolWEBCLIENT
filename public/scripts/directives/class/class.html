@@ -32,7 +32,7 @@
             <div class="col-md-4">
                 <div class="form-group">
                     <label>Add Sections :</label>
-                    <select name="sec" ng-options="s as s.sectionname for s in sections" id="sec" ng-model="selectSection" class="form-control">
+                    <select name="sec" ng-change="onSectionChange()" ng-options="s as s.sectionname for s in sections" id="sec" ng-model="selectSection" class="form-control">
                         <option value="">--Select Section--</option>
                         
                    </select>
@@ -68,7 +68,16 @@
                 <div class="panel-body">
                     <small><ng-letter-avatar data="{{s.sectionName.sectionname}}" rotatedeg="0" shape="round"></ng-letter-avatar></small>
                 
-                <a ng-click="sectionRemove(s)">
+
+
+ 
+
+
+
+                <a ng-click="sectionRemove(s)" confirm="Are you sure to delete !!!"
+                                        confirm-settings="{size: 'md'}" confirm-header-class="confirm-header-danger " confirm-footer-class="confirm-footer-default"
+                                        confirm-ok-button-class="btn-danger" confirm-cancel-button-class="btn-default" confirm-title="Confirm Deletion!!"
+                                        confirm-ok="Yes" confirm-cancel="No" title="Remove">
                 <i class="fa fa-trash-o fa-2x" style="color:red"  aria-hidden="true"></i>
                 </a>
 
@@ -77,16 +86,14 @@
         </div>
     </div>
 
-     <div class="col-lg-6"></div>
-
-
-
     <div class="col-lg-6">
 
-        <button type="button" class="btn btn-primary" style="border-radius:0px">
+        <button ng-disabled="savebTrue" type="button" ng-click="saveClass()" class="btn btn-primary" style="border-radius:0px">
             <i class="fa fa-floppy-o" aria-hidden="true"></i>
             Save</button>
 
     </div>
+
+<toaster-container toaster-options="{'time-out': 3000, 'close-button':true, 'position-class':'toast-bottom-right'}"></toaster-container>
 
 </div>

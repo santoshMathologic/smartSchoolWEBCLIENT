@@ -36,7 +36,8 @@ var app = angular
     'ngDropover',
     'angucomplete-alt',
     'ngLetterAvatar',
-    'ngDialog'
+    'ngDialog',
+    'ngAnimate'
   ]);
 
 
@@ -95,11 +96,6 @@ app.config(['$stateProvider', '$urlRouterProvider','$ocLazyLoadProvider', functi
                   "bower_components/angular-toggle-switch/angular-toggle-switch.css"
                 ]
               }),
-            $ocLazyLoad.load(
-              {
-                name: 'ngAnimate',
-                files: ['bower_components/angular-animate/angular-animate.js']
-              })
           $ocLazyLoad.load(
             {
               name: 'ngCookies',
@@ -308,6 +304,21 @@ app.config(['$stateProvider', '$urlRouterProvider','$ocLazyLoadProvider', functi
               files: [
                 'scripts/controllers/user.js',
                 'scripts/directives/user/user.js'
+              ]
+            })
+        }
+      }
+    }).state('dashboard.testPage', {
+      templateUrl: 'views/pages/test.html',
+      url: '/test',
+      controller: 'testCtrl',
+      resolve: {
+        loadMyDirectives: function ($ocLazyLoad) {
+          return $ocLazyLoad.load(
+            {
+              name: 'smartSchoolApp',
+              files: [
+                'scripts/controllers/test.js',
               ]
             })
         }

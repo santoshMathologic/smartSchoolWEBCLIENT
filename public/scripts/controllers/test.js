@@ -5,7 +5,7 @@ angular.module('smartSchoolApp')
         console.log("Test Page");
         $scope.userLists = [];
 
-        $http.get("http://jsonplaceholder.typicode.com/posts").then(function (res) {
+       $scope.myPromise =  $http.get("http://jsonplaceholder.typicode.com/posts").then(function (res) {
 
             $scope.userLists = res.data;
 
@@ -13,6 +13,7 @@ angular.module('smartSchoolApp')
 
         $scope.remove = function (user) {
             BootstrapDialog.show({
+                type: BootstrapDialog.TYPE_SUCCESS,
                 title: 'Say-hello dialog',
                 message: $('<div></div>').load('views/pages/remote.html')
             });

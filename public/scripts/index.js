@@ -37,7 +37,8 @@ var app = angular
     'angucomplete-alt',
     'ngLetterAvatar',
     'ngDialog',
-    'ngAnimate'
+    'ngAnimate',
+    'cgBusy'
   ]);
 
 

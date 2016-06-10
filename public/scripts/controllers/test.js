@@ -12,6 +12,10 @@ angular.module('smartSchoolApp')
         })
 
         $scope.remove = function (user) {
+            BootstrapDialog.show({
+                title: 'Say-hello dialog',
+                message: $('<div></div>').load('views/pages/remote.html')
+            });
             $scope.userLists.splice($scope.userLists.indexOf(user.Name), 1);
         }
 
